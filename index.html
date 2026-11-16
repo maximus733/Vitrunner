@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#06080d" />
+  <title>CampusCart VITC — V-Mart Peer Runner</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top App Bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-orb"></span>
+      <div>
+        <h1>CampusCart <span class="neon-tag">VITC</span></h1>
+        <p class="subtitle">V-Mart Peer Runner Network</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="installBtn" class="btn btn-sm btn-cerulean hidden">Install App</button>
+      <button id="logoutBtn" class="btn btn-sm btn-ghost hidden">Logout</button>
+    </div>
+  </header>
+
+  <!-- Toast Banner -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- 1. AUTH GATE -->
+  <main id="authView" class="container center-card">
+    <div class="card glow-card auth-card">
+      <div class="pill-rose">VIT CHENNAI EXCLUSIVE</div>
+      <h2>Hostel Gate Delivery in Minutes</h2>
+      <p class="muted">
+        Order snacks, cold drinks, and stationery from V-Mart—delivered to your hostel block gate by verified same-hostel-zone peers.
+      </p>
+      <ul class="feature-list">
+        <li><span class="dot-cerulean"></span> Verified <strong>@vitstudent.ac.in</strong> students only</li>
+        <li><span class="dot-rose"></span> Same-gender hostel zone matching (Boys A/D/E/F · Ladies B/C)</li>
+        <li><span class="dot-cerulean"></span> Distance-based delivery fees (₹5–₹15) + printed MRP receipt</li>
+      </ul>
+      <button id="googleLoginBtn" class="btn btn-rose btn-block">
+        Sign in with VIT Google Account
+      </button>
+      <p class="disclaimer">
+        Independent student utility. Gate-only handoffs with 4-digit OTP confirmation.
+      </p>
+    </div>
+  </main>
+
+  <!-- 2. ONBOARDING MODAL -->
+  <section id="onboardingView" class="container center-card hidden">
+    <div class="card glow-card">
+      <div class="pill-cerulean">ONE-TIME CAMPUS SETUP</div>
+      <h2>Complete Your Hostel Profile</h2>
+      <p class="muted small">Your hostel block automatically sets your Boys/Ladies delivery zone for campus compliance.</p>
+      <form id="onboardingForm" class="stack" style="margin-top: 14px;">
+        <label>
+          Full Name
+          <input type="text" id="obName" required placeholder="e.g., Piyush Tripathy" />
+        </label>
+        <label>
+          Your Hostel Block (Sets Boys / Ladies Zone)
+          <select id="obBlock" required>
+            <optgroup label="Boys Hostel Blocks (Male Zone)">
+              <option value="A-Block">A-Block (Boys)</option>
+              <option value="D-Block">D-Block (Boys)</option>
+              <option value="E-Block">E-Block (Boys)</option>
+              <option value="F-Block">F-Block (Boys)</option>
+            </optgroup>
+            <optgroup label="Ladies Hostel Blocks (Female Zone)">
+              <option value="B-Block">B-Block (Ladies)</option>
+              <option value="C-Block">C-Block (Ladies)</option>
+            </optgroup>
+          </select>
+        </label>
+        <label>
+          WhatsApp / Call Number (10 digits)
+          <input type="tel" id="obPhone" pattern="[0-9]{10}" required placeholder="9876543210" />
+        </label>
+        <label>
+          Your UPI ID (for receiving runner payouts)
+          <input type="text" id="obUpi" required placeholder="name@okicici / number@ybl" />
+        </label>
+        <button type="submit" class="btn btn-cerulean btn-block">Launch CampusCart</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 3. MAIN APP SHELL -->
+  <div id="appShell" class="hidden">
+    <!-- User Status Strip -->
+    <div class="status-strip">
+      <span>
+        <strong id="userDisplayName">Student</strong> ·
+        <span id="userBlockBadge" class="cerulean-text">A-Block</span> ·
+        <span id="userZoneBadge" class="rose-text" style="font-weight:700;">BOYS ZONE</span>
+      </span>
+      <span class="credit-pill" id="headerCreditBadge">Credits: 0</span>
+    </div>
+
+    <!-- TAB 1: ORDER FROM V-MART (BUYER) -->
+    <section id="tabOrder" class="container tab-panel">
+      <div class="card">
+        <div class="row-between" style="margin-bottom: 10px;">
+          <div>
+            <h3>V-Mart Quick Catalog</h3>
+            <p class="muted small">Tap an item to add to your basket</p>
+          </div>
+          <span class="badge-rose">Min Cart ₹50</span>
+        </div>
+
+        <div id="catalogGrid" class="catalog-grid"></div>
+
+        <div class="divider"></div>
+        <p class="small muted" style="margin-bottom: 6px;">Need something else from V-Mart?</p>
+        <div class="custom-item-row">
+          <input type="text" id="customItemName" placeholder="Custom item (e.g., Dark Fantasy)" />
+          <input type="number" id="customItemPrice" placeholder="MRP ₹" min="5" max="400" />
+          <button type="button" id="addCustomItemBtn" class="btn btn-cerulean">+ Add</button>
+        </div>
+      </div>
+
+      <div class="card glow-card-subtle">
+        <div class="row-between">
+          <h3>Your Basket</h3>
+          <span id="basketCountBadge" class="badge-cerulean">0 items</span>
+        </div>
+        <div id="cartList" class="cart-list muted" style="margin-top: 8px;">No items added yet.</div>
+
+        <div class="divider"></div>
+
+        <div class="stack-sm">
+          <label>
+            Drop-off Hostel Gate (Restricted to Your Hostel Zone)
+            <select id="orderDropBlock"></select>
+          </label>
+          <p id="distanceTierNote" class="small cerulean-text">Distance from V-Mart: Nearest · Fixed Runner Fee: ₹5</p>
+        </div>
+
+        <div class="summary-box">
+          <div class="row-between"><span>Est. V-Mart Printed MRP:</span><strong id="estItemsTotal">₹0</strong></div>
+          <div class="row-between"><span>Distance Runner Fee:</span><strong id="tipDisplay" class="cerulean-text">₹5</strong></div>
+          <div class="row-between total-row"><span>Est. Total at Gate:</span><strong id="estGrandTotal" class="rose-text">₹5</strong></div>
+        </div>
+
+        <button id="placeOrderBtn" class="btn btn-rose btn-block">Post Request to Same-Zone Runners</button>
+      </div>
+    </section>
+
+    <!-- TAB 2: RUNNER FEED (SAME-GENDER ONLY) -->
+    <section id="tabRunner" class="container tab-panel hidden">
+      <div class="card row-between">
+        <div>
+          <h3>Open Requests (<span id="runnerZoneTitle" class="rose-text">Boys</span>)</h3>
+          <p class="muted small">1 Credit (₹1) = 1 Claim · Distance-based payout</p>
+        </div>
+        <select id="runnerFilterBlock" class="compact-select"></select>
+      </div>
+      <div id="openOrdersList" class="stack"></div>
+    </section>
+
+    <!-- TAB 3: ACTIVE ORDERS -->
+    <section id="tabActive" class="container tab-panel hidden">
+      <h3 style="margin-bottom: 10px;">Live Delivery Tracker</h3>
+      <div id="myActiveOrdersList" class="stack"></div>
+    </section>
+
+    <!-- TAB 4: RUNNER WALLET + HOW IT WORKS -->
+    <section id="tabWallet" class="container tab-panel hidden">
+      <div class="card wallet-hero">
+        <span class="pill-cerulean">RUNNER CREDIT BALANCE</span>
+        <h2 id="walletBalanceBig">0 Credits</h2>
+        <p class="small muted">Ultra-low ₹1 platform fee per delivery. You keep 100% of the distance payout.</p>
+      </div>
+
+      <!-- How the Wallet Works Instructions -->
+      <div class="card guide-card">
+        <div class="row-between" style="margin-bottom: 10px;">
+          <h3>How Wallet &amp; Distance Pay Work</h3>
+          <span class="badge-cerulean">Only ₹1 / Claim</span>
+        </div>
+        <div class="steps-guide">
+          <div class="guide-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Prepaid Credits (₹1 per Delivery)</strong>
+              <p class="small muted">Top up ₹20 for 20 claims (or ₹50 for 55 claims) via UPI and enter your 12-digit UTR reference.</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Fair Distance Payouts from V-Mart (₹5 – ₹15)</strong>
+              <p class="small muted">Runners earn strictly by walking distance: <strong>₹5</strong> (A/B Block), <strong>₹8</strong> (C Block), <strong>₹9</strong> (D Block), <strong>₹12</strong> (E Block), and <strong>₹15</strong> (F Block — farthest).</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Same-Zone Gate Handoff + OTP</strong>
+              <p class="small muted">Boys only deliver to Boys blocks (A, D, E, F) and Ladies only to Ladies blocks (B, C). Buyer pays exact bill + distance fee at the gate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top-Up Card -->
+      <div class="card">
+        <h3>Top Up Runner Credits</h3>
+        <div class="pack-grid">
+          <button type="button" class="pack-btn selected" data-pack="mini_20" data-price="20" data-credits="20">
+            <span class="pack-tag">STARTER</span>
+            <strong>20 Credits</strong>
+            <span class="cerulean-text">₹20 (₹1.0 / order)</span>
+          </button>
+          <button type="button" class="pack-btn" data-pack="value_50" data-price="50" data-credits="55">
+            <span class="pack-tag rose">BONUS +5</span>
+            <strong>55 Credits</strong>
+            <span class="rose-text">₹50 (₹0.9 / order)</span>
+          </button>
+        </div>
+
+        <div class="upi-box">
+          <p class="small"><strong>Step A:</strong> Pay <strong id="selectedPackPrice" class="rose-text">₹20</strong> to Admin UPI ID:</p>
+          <div class="upi-copy-row">
+            <code id="adminUpiText">yourupi@okicici</code>
+            <button type="button" id="copyUpiBtn" class="btn btn-sm btn-outline">Copy</button>
+            <a id="upiDeepLink" href="#" class="btn btn-sm btn-cerulean">Pay via UPI App</a>
+          </div>
+        </div>
+
+        <form id="utrForm" class="stack-sm">
+          <label>
+            <strong>Step B:</strong> Paste 12-Digit UPI Reference / UTR Number
+            <input type="text" id="utrInput" pattern="[0-9]{12}" maxlength="12" required placeholder="e.g., 632018492014" />
+          </label>
+          <button type="submit" class="btn btn-rose btn-block">Submit UTR for Verification</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Top-Up History</h3>
+        <div id="myTopupsList" class="stack-sm muted small" style="margin-top: 8px;">No top-up requests yet.</div>
+      </div>
+    </section>
+
+    <!-- TAB 5: ADMIN PANEL -->
+    <section id="tabAdmin" class="container tab-panel hidden">
+      <div class="card">
+        <h3>Pending UPI Credit Top-Ups</h3>
+        <div id="adminTopupQueue" class="stack" style="margin-top: 10px;"></div>
+      </div>
+
+      <div class="card">
+        <h3>Manage V-Mart Catalog</h3>
+        <form id="adminCatalogForm" class="stack-sm" style="margin-top: 10px;">
+          <div class="custom-item-row" style="margin-top: 0;">
+            <input type="text" id="newCatName" required placeholder="Item Name (e.g., Red Bull 250ml)" />
+            <input type="number" id="newCatPrice" required placeholder="MRP ₹" min="1" max="500" />
+            <button type="submit" class="btn btn-cerulean">Add</button>
+          </div>
+          <input type="url" id="newCatImage" placeholder="Optional Product Image URL (leave blank for auto-icon)" />
+        </form>
+        <div id="adminCatalogList" class="stack-sm" style="margin-top: 14px;"></div>
+      </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-target="tabOrder">Order</button>
+      <button class="nav-btn" data-target="tabRunner">Deliver</button>
+      <button class="nav-btn" data-target="tabActive">Active</button>
+      <button class="nav-btn" data-target="tabWallet">Wallet</button>
+      <button id="adminNavBtn" class="nav-btn hidden" data-target="tabAdmin">Admin</button>
+    </nav>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
