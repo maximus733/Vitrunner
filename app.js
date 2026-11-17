@@ -12,7 +12,7 @@ import {
 // 1. CONFIGURATION
 // ==========================================
 const firebaseConfig = {
-  apiKey: "AIzaSyBlxQhQ_6l6K5wmxxUzqzuESQRJjekNtww",
+  apiKey: "AIzaSyBlxQnD_6l6K5wnxxUzqzuESQRJjekNtww",
   authDomain: "campuscart-vitc.firebaseapp.com",
   projectId: "campuscart-vitc",
   storageBucket: "campuscart-vitc.firebasestorage.app",
@@ -21,8 +21,8 @@ const firebaseConfig = {
   measurementId: "G-4VLNJSZJ8P"
 };
 
-const ADMIN_EMAIL = "piyush.tripathy2026@vitstudent.ac.in"; // <-- Replace with your @vitstudent.ac.in email
-const ADMIN_UPI_ID = "massamune78@oksbi";                 // <-- Replace with your UPI ID
+const ADMIN_EMAIL = "piyush.tripathy2026@vitstudent.ac.in";
+const ADMIN_UPI_ID = "massamune78@oksbi";
 const MIN_CART_INR = 50;
 const MAX_CART_INR = 400;
 
@@ -78,21 +78,21 @@ function getProductVisual(item) {
   }
   const n = item.name.toLowerCase();
   if (n.includes("maggi") || n.includes("noodle")) {
-    return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#ff2a6d" stroke-width="1.8"><path d="M3 11h18v2a8 8 0 0 1-16 0v-2Z"/><path d="M6 11V5m4 6V4m4 7V5m4 6V6" stroke="#38bdf8"/></svg>`;
+    return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e11d5a" stroke-width="1.6"><path d="M3 11h18v2a8 8 0 0 1-16 0v-2Z"/><path d="M6 11V5m4 6V4m4 7V5m4 6V6" stroke="#38bdf8"/></svg>`;
   }
   if (n.includes("lay") || n.includes("chip") || n.includes("kurkure") || n.includes("snack")) {
-    return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="12" r="3.5" stroke="#ff2a6d"/></svg>`;
+    return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="12" r="3.5" stroke="#e11d5a"/></svg>`;
   }
   if (n.includes("cola") || n.includes("sprite") || n.includes("drink") || n.includes("juice") || n.includes("bull")) {
-    return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><path d="M9 3h6l1 4v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V7l1-4Z"/><path d="M8 11h8" stroke="#ff2a6d"/></svg>`;
+    return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.6"><path d="M9 3h6l1 4v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V7l1-4Z"/><path d="M8 11h8" stroke="#e11d5a"/></svg>`;
   }
   if (n.includes("pen") || n.includes("book") || n.includes("note") || n.includes("file")) {
-    return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#ff2a6d" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="#38bdf8"/></svg>`;
+    return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e11d5a" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="#38bdf8"/></svg>`;
   }
   if (n.includes("oreo") || n.includes("biscuit") || n.includes("cookie") || n.includes("choco")) {
-    return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#ff2a6d" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1" fill="#38bdf8"/><circle cx="14" cy="14" r="1" fill="#38bdf8"/><circle cx="14" cy="9" r="1" fill="#38bdf8"/></svg>`;
+    return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e11d5a" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1" fill="#38bdf8"/><circle cx="14" cy="14" r="1" fill="#38bdf8"/><circle cx="14" cy="9" r="1" fill="#38bdf8"/></svg>`;
   }
-  return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="#ff2a6d"/><path d="M16 10a4 4 0 0 1-8 0" stroke="#ff2a6d"/></svg>`;
+  return `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.6"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="#e11d5a"/><path d="M16 10a4 4 0 0 1-8 0" stroke="#e11d5a"/></svg>`;
 }
 
 if ("serviceWorker" in navigator) {
@@ -148,7 +148,7 @@ document.getElementById("googleLoginBtn").addEventListener("click", async () => 
       showToast("Access restricted to @vitstudent.ac.in accounts.");
     }
   } catch (err) {
-    showToast("Login failed: " + err.message);
+    showToast("Sign-in error: " + err.message);
   }
 });
 
@@ -212,7 +212,7 @@ document.getElementById("onboardingForm").addEventListener("submit", async (e) =
       isBanned: false,
       createdAt: serverTimestamp()
     });
-    showToast("Campus profile saved!");
+    showToast("Profile saved.");
   } catch (err) {
     showToast("Error saving profile: " + err.message);
   }
@@ -228,7 +228,7 @@ function initAppShell() {
   document.getElementById("userBlockBadge").textContent = userProfile.defaultBlock;
   document.getElementById("userZoneBadge").textContent = isMale ? "BOYS ZONE" : "LADIES ZONE";
   document.getElementById("runnerZoneTitle").textContent = isMale ? "Boys A/D/E/F" : "Ladies B/C";
-  document.getElementById("headerCreditBadge").textContent = `Credits: ${userProfile.runnerCredits}`;
+  document.getElementById("headerCreditBadge").textContent = userProfile.runnerCredits;
   document.getElementById("walletBalanceBig").textContent = `${userProfile.runnerCredits} Credits`;
   document.getElementById("adminUpiText").textContent = ADMIN_UPI_ID;
   updateUpiDeepLink();
@@ -250,7 +250,7 @@ function initAppShell() {
   allowedBlocks.forEach(([, cfg]) => {
     const opt1 = document.createElement("option");
     opt1.value = cfg.gate;
-    opt1.textContent = `${cfg.gate} (${cfg.distanceLabel} — ₹${cfg.fee})`;
+    opt1.textContent = `${cfg.gate} (${cfg.distanceLabel} | ₹${cfg.fee})`;
     dropSelect.appendChild(opt1);
 
     const opt2 = document.createElement("option");
@@ -311,7 +311,7 @@ function subscribeCatalog() {
           <div class="product-title">${item.name}</div>
         </div>
         <div class="product-footer">
-          <span class="mrp-tag">MRP ₹${item.approxPrice}</span>
+          <span class="mrp-tag mono">₹${item.approxPrice}</span>
           <span class="add-chip">+ ADD</span>
         </div>
       `;
@@ -334,7 +334,7 @@ function addToCart(name, approxPrice) {
 document.getElementById("addCustomItemBtn").addEventListener("click", () => {
   const name = document.getElementById("customItemName").value.trim();
   const price = Number(document.getElementById("customItemPrice").value);
-  if (!name || price < 5) return showToast("Enter item name and estimated MRP ₹.");
+  if (!name || price < 5) return showToast("Enter item name and estimated MRP.");
   addToCart(name, price);
   document.getElementById("customItemName").value = "";
   document.getElementById("customItemPrice").value = "";
@@ -347,13 +347,13 @@ function renderCart() {
   const deliveryFee = routeInfo.fee;
 
   document.getElementById("distanceTierNote").textContent =
-    `Distance from V-Mart: ${routeInfo.distanceLabel} · Fixed Runner Payout: ₹${deliveryFee}`;
+    `Distance: ${routeInfo.distanceLabel} | Fixed Runner Fee: ₹${deliveryFee}`;
 
   let itemsTotal = 0;
   let totalCount = 0;
 
   if (cart.length === 0) {
-    list.innerHTML = `<span class="muted">No items added yet.</span>`;
+    list.innerHTML = `<span class="muted small">Your basket is empty.</span>`;
   } else {
     list.innerHTML = "";
     cart.forEach((item, idx) => {
@@ -362,10 +362,10 @@ function renderCart() {
       const row = document.createElement("div");
       row.className = "cart-row";
       row.innerHTML = `
-        <span>${item.name} <small class="cerulean-text">(₹${item.approxPrice})</small></span>
+        <span>${item.name} <small class="mono text-cerulean">(₹${item.approxPrice})</small></span>
         <div class="qty-controls">
           <button class="qty-btn" data-act="dec" data-idx="${idx}">-</button>
-          <strong>${item.qty}</strong>
+          <strong class="mono">${item.qty}</strong>
           <button class="qty-btn" data-act="inc" data-idx="${idx}">+</button>
         </div>
       `;
@@ -384,7 +384,7 @@ function renderCart() {
     });
   }
 
-  document.getElementById("basketCountBadge").textContent = `${totalCount} ${totalCount === 1 ? "item" : "items"}`;
+  document.getElementById("basketCountBadge").textContent = `${totalCount} ${totalCount === 1 ? "ITEM" : "ITEMS"}`;
   document.getElementById("estItemsTotal").textContent = `₹${itemsTotal}`;
   document.getElementById("tipDisplay").textContent = `₹${deliveryFee}`;
   document.getElementById("estGrandTotal").textContent = `₹${itemsTotal + deliveryFee}`;
@@ -393,12 +393,12 @@ function renderCart() {
 document.getElementById("placeOrderBtn").addEventListener("click", async () => {
   const estTotal = cart.reduce((sum, i) => sum + i.approxPrice * i.qty, 0);
   if (estTotal < MIN_CART_INR) return showToast(`Minimum basket value is ₹${MIN_CART_INR}.`);
-  if (estTotal > MAX_CART_INR) return showToast(`Max basket limit is ₹${MAX_CART_INR} for runner safety.`);
+  if (estTotal > MAX_CART_INR) return showToast(`Maximum basket value is ₹${MAX_CART_INR}.`);
 
   const dropBlock = document.getElementById("orderDropBlock").value;
   const routeInfo = getFeeByGate(dropBlock);
   if (routeInfo.gender !== userProfile.gender) {
-    return showToast("You can only order to your own Boys/Ladies hostel zone.");
+    return showToast("Orders are restricted to your own hostel zone.");
   }
 
   const otp = String(Math.floor(1000 + Math.random() * 9000));
@@ -429,7 +429,7 @@ document.getElementById("placeOrderBtn").addEventListener("click", async () => {
     });
     cart = [];
     renderCart();
-    showToast("Order posted to same-zone runners!");
+    showToast("Order posted.");
     document.querySelector('[data-target="tabActive"]').click();
   } catch (err) {
     showToast("Could not post order: " + err.message);
@@ -469,22 +469,22 @@ function subscribeOpenOrders(blockFilter) {
     container.innerHTML = "";
     const otherDocs = snap.docs.filter((d) => d.data().buyerId !== currentUser.uid);
     if (otherDocs.length === 0) {
-      container.innerHTML = `<div class="card muted">No open ${userProfile.gender === "MALE" ? "Boys" : "Ladies"} block requests right now.</div>`;
+      container.innerHTML = `<p class="muted small">No open ${userProfile.gender === "MALE" ? "Boys" : "Ladies"} hostel requests right now.</p>`;
       return;
     }
     otherDocs.forEach((docSnap) => {
       const o = docSnap.data();
-      const itemsText = o.items.map((i) => `${i.qty}× ${i.name}`).join(", ");
+      const itemsText = o.items.map((i) => `${i.qty}x ${i.name}`).join(", ");
       const card = document.createElement("div");
-      card.className = "card glow-card-subtle stack-sm";
+      card.className = "order-item-card stack-sm";
       card.innerHTML = `
         <div class="row-between">
-          <span class="badge-cerulean">${o.dropBlock} · ${o.distanceLabel || ""}</span>
-          <span class="badge-rose">Earn ₹${o.tipAmount}</span>
+          <span class="tag-cerulean">${o.dropBlock} | ${o.distanceLabel || ""}</span>
+          <span class="tag-rose mono">FEE ₹${o.tipAmount}</span>
         </div>
-        <p><strong>Basket:</strong> ${itemsText}</p>
-        <p class="small muted">Est. V-Mart MRP: ~₹${o.estItemsTotal} · Buyer: ${o.buyerName}</p>
-        <button class="btn btn-cerulean btn-block claim-btn">Claim Delivery (1 Credit)</button>
+        <p class="small"><strong>Items:</strong> ${itemsText}</p>
+        <p class="small muted">Est. Store Bill: ₹${o.estItemsTotal} | Buyer: ${o.buyerName}</p>
+        <button class="btn btn-cerulean btn-block claim-btn">Claim Order (1 Credit)</button>
       `;
       card.querySelector(".claim-btn").onclick = () => claimOrderAtomically(docSnap.id);
       container.appendChild(card);
@@ -494,7 +494,7 @@ function subscribeOpenOrders(blockFilter) {
 
 async function claimOrderAtomically(orderId) {
   if ((userProfile.runnerCredits || 0) < 1) {
-    showToast("You need at least 1 Runner Credit (₹1). Top up in Wallet!");
+    showToast("Insufficient credits. Top up in Runner Wallet.");
     document.querySelector('[data-target="tabWallet"]').click();
     return;
   }
@@ -508,10 +508,10 @@ async function claimOrderAtomically(orderId) {
       const orderSnap = await tx.get(orderRef);
 
       if (!orderSnap.exists() || orderSnap.data().status !== "OPEN") {
-        throw new Error("Order was already claimed by someone else.");
+        throw new Error("Order was already claimed.");
       }
       if (orderSnap.data().targetGender !== userProfile.gender) {
-        throw new Error("Hostel zone mismatch: You can only deliver within your own Boys/Ladies zone.");
+        throw new Error("Hostel zone mismatch.");
       }
       const credits = userSnap.data().runnerCredits || 0;
       if (credits < 1) throw new Error("Insufficient credits.");
@@ -526,7 +526,7 @@ async function claimOrderAtomically(orderId) {
         claimedAt: serverTimestamp()
       });
     });
-    showToast("Order claimed! 1 credit deducted.");
+    showToast("Order claimed. 1 credit deducted.");
     document.querySelector('[data-target="tabActive"]').click();
   } catch (err) {
     showToast(err.message);
@@ -546,15 +546,15 @@ function subscribeMyActiveOrders() {
     container.innerHTML = "";
     const all = [...buyerOrders, ...runnerOrders];
     if (all.length === 0) {
-      container.innerHTML = `<div class="card muted">No active deliveries right now.</div>`;
+      container.innerHTML = `<p class="muted small">No active orders.</p>`;
       return;
     }
 
     all.forEach((o) => {
       const isBuyer = o.buyerId === currentUser.uid;
-      const itemsText = o.items.map((i) => `${i.qty}× ${i.name}`).join(", ");
+      const itemsText = o.items.map((i) => `${i.qty}x ${i.name}`).join(", ");
       const card = document.createElement("div");
-      card.className = "card glow-card stack-sm";
+      card.className = "order-item-card stack-sm";
 
       let roleControls = "";
       if (isBuyer) {
@@ -564,33 +564,33 @@ function subscribeMyActiveOrders() {
           : "#";
 
         roleControls = `
-          <div class="otp-banner">GATE OTP: ${o.handoffOtp}</div>
+          <div class="otp-banner mono">HANDOFF OTP: ${o.handoffOtp}</div>
           <p class="small"><strong>Drop Gate:</strong> ${o.dropBlock}</p>
-          <p class="small"><strong>Runner:</strong> ${o.runnerName ? `${o.runnerName} (${o.runnerPhone})` : "Searching for same-zone runner..."}</p>
-          ${o.actualBillAmount ? `<p><strong>Verified Bill:</strong> ₹${o.actualBillAmount} + ₹${o.tipAmount} distance fee = <strong class="rose-text">₹${finalPay}</strong></p>` : ""}
-          ${o.receiptBase64 ? `<img src="${o.receiptBase64}" class="receipt-preview" alt="V-Mart Bill" />` : ""}
-          ${o.status === "AT_GATE" ? `<a href="${payLink}" class="btn btn-rose btn-block">Pay ₹${finalPay} to Runner UPI</a>` : ""}
+          <p class="small"><strong>Runner:</strong> ${o.runnerName ? `${o.runnerName} (${o.runnerPhone})` : "Awaiting runner claim"}</p>
+          ${o.actualBillAmount ? `<p class="small"><strong>Verified Bill:</strong> ₹${o.actualBillAmount} + ₹${o.tipAmount} fee = <strong class="mono text-rose">₹${finalPay}</strong></p>` : ""}
+          ${o.receiptBase64 ? `<img src="${o.receiptBase64}" class="receipt-preview" alt="V-Mart Receipt" />` : ""}
+          ${o.status === "AT_GATE" ? `<a href="${payLink}" class="btn btn-rose btn-block">Pay ₹${finalPay} via UPI</a>` : ""}
           ${o.status === "OPEN" ? `<button class="btn btn-outline btn-sm cancel-order-btn">Cancel Request</button>` : ""}
         `;
       } else {
         roleControls = `
-          <p class="small"><strong>Buyer:</strong> ${o.buyerName} (${o.buyerPhone}) · Gate: <strong class="cerulean-text">${o.dropBlock}</strong></p>
+          <p class="small"><strong>Buyer:</strong> ${o.buyerName} (${o.buyerPhone}) | Gate: <strong class="text-cerulean">${o.dropBlock}</strong></p>
           ${o.status === "CLAIMED" ? `
-            <div class="stack-sm" style="background:#090d16;padding:12px;border-radius:10px;border:1px solid #1e293b;">
-              <label>Actual V-Mart Bill Total (₹)
-                <input type="number" class="actual-bill-input" placeholder="Enter exact bill ₹" min="1" max="500" />
+            <div class="stack-sm" style="background:var(--surface);padding:12px;border-radius:6px;border:1px solid var(--border);">
+              <label>Actual V-Mart Receipt Total (₹)
+                <input type="number" class="actual-bill-input" placeholder="Exact bill amount" min="1" max="500" />
               </label>
-              <label>Upload Printed V-Mart Receipt Photo
+              <label>Upload Printed Receipt Photo
                 <input type="file" accept="image/*" class="receipt-file-input" />
               </label>
-              <button class="btn btn-cerulean btn-block mark-gate-btn">Upload Bill &amp; Mark At Gate</button>
+              <button class="btn btn-cerulean btn-block mark-gate-btn">Submit Receipt &amp; Mark At Gate</button>
             </div>
           ` : `
-            <p class="small">Collect <strong class="rose-text">₹${o.actualBillAmount + o.tipAmount}</strong> via UPI at gate, then enter buyer's 4-digit OTP:</p>
+            <p class="small">Collect <strong class="mono text-rose">₹${o.actualBillAmount + o.tipAmount}</strong> via UPI at gate, then enter buyer's 4-digit OTP:</p>
             <div class="custom-item-row">
-              <input type="text" maxlength="4" class="otp-verify-input" placeholder="4-Digit OTP" />
+              <input type="text" maxlength="4" class="otp-verify-input mono" placeholder="4-Digit OTP" />
               <span></span>
-              <button class="btn btn-success complete-otp-btn">Complete</button>
+              <button class="btn btn-success complete-otp-btn">Confirm</button>
             </div>
           `}
         `;
@@ -598,10 +598,10 @@ function subscribeMyActiveOrders() {
 
       card.innerHTML = `
         <div class="row-between">
-          <span class="${isBuyer ? "badge-cerulean" : "badge-rose"}">${isBuyer ? "YOUR ORDER" : "DELIVERING"}</span>
-          <span class="badge-green">${o.status}</span>
+          <span class="${isBuyer ? "tag-cerulean" : "tag-rose"}">${isBuyer ? "OUTGOING REQUEST" : "ACTIVE DELIVERY"}</span>
+          <span class="tag-green">${o.status}</span>
         </div>
-        <p><strong>Items:</strong> ${itemsText}</p>
+        <p class="small"><strong>Items:</strong> ${itemsText}</p>
         ${roleControls}
       `;
 
@@ -618,7 +618,7 @@ function subscribeMyActiveOrders() {
         gateBtn.onclick = async () => {
           const billVal = Number(card.querySelector(".actual-bill-input").value);
           const file = card.querySelector(".receipt-file-input").files[0];
-          if (!billVal || !file) return showToast("Enter bill amount and select receipt photo.");
+          if (!billVal || !file) return showToast("Enter bill amount and attach receipt photo.");
           gateBtn.disabled = true;
           gateBtn.textContent = "Uploading...";
           try {
@@ -628,7 +628,7 @@ function subscribeMyActiveOrders() {
               actualBillAmount: billVal,
               receiptBase64: compressed
             });
-            showToast("Bill uploaded! Buyer alerted at gate.");
+            showToast("Receipt uploaded.");
           } catch (err) {
             showToast("Upload error: " + err.message);
             gateBtn.disabled = false;
@@ -640,12 +640,12 @@ function subscribeMyActiveOrders() {
       if (otpBtn) {
         otpBtn.onclick = async () => {
           const entered = card.querySelector(".otp-verify-input").value.trim();
-          if (entered !== o.handoffOtp) return showToast("Incorrect OTP! Check with buyer.");
+          if (entered !== o.handoffOtp) return showToast("Invalid OTP.");
           await updateDoc(doc(db, "orders", o.id), {
             status: "COMPLETED",
             completedAt: serverTimestamp()
           });
-          showToast("Delivery completed!");
+          showToast("Delivery completed.");
         };
       }
 
@@ -690,19 +690,19 @@ function updateUpiDeepLink() {
 
 document.getElementById("copyUpiBtn").addEventListener("click", () => {
   navigator.clipboard.writeText(ADMIN_UPI_ID);
-  showToast("Admin UPI ID copied!");
+  showToast("UPI ID copied.");
 });
 
 document.getElementById("utrForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const utr = document.getElementById("utrInput").value.trim();
-  if (!/^[0-9]{12}$/.test(utr)) return showToast("Enter a valid 12-digit UPI Reference/UTR number.");
+  if (!/^[0-9]{12}$/.test(utr)) return showToast("Enter a valid 12-digit UTR number.");
 
   try {
     const topupRef = doc(db, "topup_requests", utr);
     const existing = await getDoc(topupRef);
     if (existing.exists()) {
-      return showToast("This 12-digit UTR has already been submitted.");
+      return showToast("This UTR number has already been submitted.");
     }
 
     await setDoc(topupRef, {
@@ -717,7 +717,7 @@ document.getElementById("utrForm").addEventListener("submit", async (e) => {
       submittedAt: serverTimestamp()
     });
     document.getElementById("utrInput").value = "";
-    showToast("UTR submitted! Credits added as soon as verified.");
+    showToast("UTR submitted for verification.");
   } catch (err) {
     showToast("Submission failed: " + err.message);
   }
@@ -733,7 +733,7 @@ function subscribeMyTopups() {
       const t = d.data();
       const div = document.createElement("div");
       div.className = "row-between";
-      div.innerHTML = `<span>UTR: ${t.utrNumber} (₹${t.amountInr} → ${t.creditsRequested} cr)</span><strong class="${t.status === "APPROVED" ? "cerulean-text" : "rose-text"}">${t.status}</strong>`;
+      div.innerHTML = `<span class="mono">UTR ${t.utrNumber} (₹${t.amountInr} | ${t.creditsRequested} cr)</span><strong class="${t.status === "APPROVED" ? "text-cerulean" : "text-rose"}">${t.status}</strong>`;
       list.appendChild(div);
     });
   });
@@ -750,12 +750,12 @@ function initAdminListeners() {
     snap.docs.forEach((docSnap) => {
       const t = docSnap.data();
       const card = document.createElement("div");
-      card.className = "card glow-card-subtle stack-sm";
+      card.className = "order-item-card stack-sm";
       card.innerHTML = `
-        <div class="row-between"><strong>${t.runnerName}</strong><span class="badge-rose">₹${t.amountInr} → +${t.creditsRequested} Cr</span></div>
-        <p class="small">UTR: <code>${t.utrNumber}</code> · ${t.runnerEmail}</p>
+        <div class="row-between"><strong>${t.runnerName}</strong><span class="tag-rose mono">₹${t.amountInr} | +${t.creditsRequested} CR</span></div>
+        <p class="small">UTR: <code>${t.utrNumber}</code> | ${t.runnerEmail}</p>
         <div class="row-between">
-          <button class="btn btn-success btn-sm approve-btn">Approve &amp; Credit</button>
+          <button class="btn btn-success btn-sm approve-btn">Approve</button>
           <button class="btn btn-rose btn-sm reject-btn">Reject</button>
         </div>
       `;
@@ -767,7 +767,7 @@ function initAdminListeners() {
           tx.update(uRef, { runnerCredits: cur + t.creditsRequested });
           tx.update(doc(db, "topup_requests", docSnap.id), { status: "APPROVED", reviewedAt: serverTimestamp() });
         });
-        showToast(`Approved +${t.creditsRequested} credits for ${t.runnerName}`);
+        showToast(`Credited +${t.creditsRequested} to ${t.runnerName}`);
       };
       card.querySelector(".reject-btn").onclick = async () => {
         await updateDoc(doc(db, "topup_requests", docSnap.id), { status: "REJECTED", reviewedAt: serverTimestamp() });
@@ -791,7 +791,7 @@ function initAdminListeners() {
     document.getElementById("newCatName").value = "";
     document.getElementById("newCatPrice").value = "";
     document.getElementById("newCatImage").value = "";
-    showToast("Item added to V-Mart catalog!");
+    showToast("Catalog item added.");
   });
 
   onSnapshot(query(collection(db, "catalog"), limit(60)), (snap) => {
@@ -802,12 +802,12 @@ function initAdminListeners() {
       const row = document.createElement("div");
       row.className = "row-between";
       row.innerHTML = `
-        <span class="small">${item.name} <strong class="cerulean-text">(₹${item.approxPrice})</strong></span>
+        <span class="small">${item.name} <strong class="mono text-cerulean">(₹${item.approxPrice})</strong></span>
         <div style="display:flex;gap:6px;">
           <button class="btn btn-sm ${item.inStock ? "btn-cerulean" : "btn-outline"} toggle-stock-btn">
             ${item.inStock ? "In Stock" : "Out"}
           </button>
-          <button class="btn btn-sm btn-rose del-cat-btn">×</button>
+          <button class="btn btn-sm btn-rose del-cat-btn">Delete</button>
         </div>
       `;
       row.querySelector(".toggle-stock-btn").onclick = () => updateDoc(doc(db, "catalog", d.id), { inStock: !item.inStock });
