@@ -12,7 +12,7 @@ import {
 // 1. CONFIGURATION
 // ==========================================
 const firebaseConfig = {
-  apiKey: "AIzaSyBlxQnD_6l6K5wnxxUzqzuESQRJjekNtww",
+  apiKey: "AIzaSyBlxQhQ_6l6K5wmxxUzqzuESQRJjekNtww",
   authDomain: "campuscart-vitc.firebaseapp.com",
   projectId: "campuscart-vitc",
   storageBucket: "campuscart-vitc.firebasestorage.app",
